@@ -40,6 +40,8 @@ import com.myjeeva.digitalocean.pojo.Actions;
 import com.myjeeva.digitalocean.pojo.Backups;
 import com.myjeeva.digitalocean.pojo.Certificate;
 import com.myjeeva.digitalocean.pojo.Certificates;
+import com.myjeeva.digitalocean.pojo.Cluster;
+import com.myjeeva.digitalocean.pojo.Clusters;
 import com.myjeeva.digitalocean.pojo.Delete;
 import com.myjeeva.digitalocean.pojo.Domain;
 import com.myjeeva.digitalocean.pojo.DomainRecord;
@@ -58,12 +60,17 @@ import com.myjeeva.digitalocean.pojo.HealthCheck;
 import com.myjeeva.digitalocean.pojo.Image;
 import com.myjeeva.digitalocean.pojo.ImageAction;
 import com.myjeeva.digitalocean.pojo.Images;
+import com.myjeeva.digitalocean.pojo.K8Options;
 import com.myjeeva.digitalocean.pojo.Kernels;
 import com.myjeeva.digitalocean.pojo.Key;
 import com.myjeeva.digitalocean.pojo.Keys;
+import com.myjeeva.digitalocean.pojo.LintRef;
+import com.myjeeva.digitalocean.pojo.LintResult;
 import com.myjeeva.digitalocean.pojo.LoadBalancer;
 import com.myjeeva.digitalocean.pojo.LoadBalancers;
 import com.myjeeva.digitalocean.pojo.Neighbors;
+import com.myjeeva.digitalocean.pojo.NodePool;
+import com.myjeeva.digitalocean.pojo.NodePools;
 import com.myjeeva.digitalocean.pojo.Project;
 import com.myjeeva.digitalocean.pojo.Projects;
 import com.myjeeva.digitalocean.pojo.Regions;
@@ -119,6 +126,7 @@ import org.slf4j.LoggerFactory;
  * DigitalOcean API client wrapper methods Implementation
  *
  * @author Jeevanandam M. (jeeva@myjeeva.com)
+ * @author EInnovator (support@einnovator.org)
  */
 public class DigitalOceanClient implements DigitalOcean, Constants {
 
@@ -1771,6 +1779,154 @@ public class DigitalOceanClient implements DigitalOcean, Constants {
     return (Delete) perform(new ApiRequest(ApiAction.DELETE_PROJECT, params)).getData();
   }
 
+  //
+  // Kubernetes Clusters and NodePools
+  //
+  
+  @Override
+  public Cluster createCluster(Cluster cluster)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    if (null == cluster || StringUtils.isBlank(cluster.getName())) {
+      throw new IllegalArgumentException("Missing required parameters [Name].");
+    }
+
+    return (Cluster) perform(new ApiRequest(ApiAction. KUBERNETES_CREATE_CLUSTER, cluster)).getData();
+  }
+
+  @Override
+  public Clusters getAvailableClusters()
+      throws DigitalOceanException, RequestUnsuccessfulException {
+    return (Clusters) perform(new ApiRequest(ApiAction. KUBERNETES_GET_ALL_CLUSTERS)).getData();
+  }
+
+  @Override
+  public Cluster updateCluster(Cluster cluster)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    if (null == cluster
+        || StringUtils.isBlank(cluster.getName())
+    	) {
+      throw new IllegalArgumentException(
+          "Missing required parameters [Name, Description, Purpose].");
+    }
+
+    Object[] params = {cluster.getId()};
+
+    return (Cluster) perform(new ApiRequest(ApiAction. KUBERNETES_UPDATE_CLUSTER, cluster, params)).getData();
+  }
+
+
+  @Override
+  public Cluster getCluster(String clusterId) throws DigitalOceanException, RequestUnsuccessfulException {
+
+    validateClusterId(clusterId);
+
+    Object[] params = {clusterId};
+    return (Cluster) perform(new ApiRequest(ApiAction. KUBERNETES_GET_CLUSTER, params)).getData();
+  }
+
+  private void validateClusterId(String clusterId) {
+    checkNullAndThrowError(clusterId, "Missing required parameter - clusterId.");
+  }
+
+  @Override
+  public Delete deleteCluster(String clusterId)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    checkBlankAndThrowError(clusterId, "Missing required parameter - clusterId.");
+
+    Object[] params = {clusterId};
+    return (Delete) perform(new ApiRequest(ApiAction. KUBERNETES_DELETE_CLUSTER, params)).getData();
+  }
+
+  @Override
+  public NodePool createNodePool(Cluster cluster, NodePool nodePool)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    if (null == nodePool || StringUtils.isBlank(nodePool.getName())) {
+      throw new IllegalArgumentException("Missing required parameters [Name].");
+    }
+    Object[] params = {cluster.getId()};
+
+    return (NodePool) perform(new ApiRequest(ApiAction. KUBERNETES_ADD_CLUSTER_NODEPOOL, nodePool, params)).getData();
+  }
+
+  @Override
+  public NodePools getAllNodePools(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException {
+    Object[] params = {cluster.getId()};
+    return (NodePools) perform(new ApiRequest(ApiAction. KUBERNETES_GET_ALL_CLUSTER_NODEPOOLS, params)).getData();
+  }
+
+  @Override
+  public NodePool updateNodePool(Cluster cluster, NodePool nodePool)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    if (null == nodePool
+        || StringUtils.isBlank(nodePool.getName())
+    	) {
+      throw new IllegalArgumentException(
+          "Missing required parameters [Name, Description, Purpose].");
+    }
+
+    Object[] params = {cluster.getId(), nodePool.getName()};
+
+    return (NodePool) perform(new ApiRequest(ApiAction. KUBERNETES_UPDATE_CLUSTER_NODEPOOL, nodePool, params)).getData();
+  }
+
+
+  @Override
+  public NodePool getNodePool(Cluster cluster, String nodePoolId) throws DigitalOceanException, RequestUnsuccessfulException {
+
+    validateNodePoolId(nodePoolId);
+
+    Object[] params = {cluster.getId(), nodePoolId};
+    return (NodePool) perform(new ApiRequest(ApiAction. KUBERNETES_GET_CLUSTER_NODEPOOL, params)).getData();
+  }
+
+  private void validateNodePoolId(String nodePoolId) {
+    checkNullAndThrowError(nodePoolId, "Missing required parameter - nodePoolId.");
+  }
+
+  @Override
+  public Delete deleteNodePool(Cluster cluster, String nodePoolId)
+      throws DigitalOceanException, RequestUnsuccessfulException {
+
+    checkBlankAndThrowError(nodePoolId, "Missing required parameter - nodePoolId.");
+
+    Object[] params = {cluster.getId(), nodePoolId};
+    return (Delete) perform(new ApiRequest(ApiAction. KUBERNETES_DELETE_CLUSTER_NODEPOOL, params)).getData();
+  }
+
+  @Override
+  public Delete deleteNode(Cluster cluster, String nodePoolId, String nodeId) throws DigitalOceanException, RequestUnsuccessfulException {
+
+    checkBlankAndThrowError(nodePoolId, "Missing required parameter - nodePoolId.");
+
+    Object[] params = {cluster.getId(), nodePoolId, nodeId};
+    return (Delete) perform(new ApiRequest(ApiAction. KUBERNETES_DELETE_CLUSTER_NODE, params)).getData();
+  }
+
+  @Override
+  public LintRef lintCluster(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException {
+
+    Object[] params = {cluster.getId()};
+    return (LintRef) perform(new ApiRequest(ApiAction. KUBERNETES_GET_CLUSTER_NODEPOOL, params)).getData();
+  }
+
+  @Override
+  public LintResult getLintDiagnostics(Cluster cluster, LintRef ref) throws DigitalOceanException, RequestUnsuccessfulException {
+
+    Object[] params = {cluster.getId()};
+    return (LintResult) perform(new ApiRequest(ApiAction. KUBERNETES_GET_CLUSTER_NODEPOOL, ref, params)).getData();
+  }
+
+  @Override
+  public K8Options getKubernetesOptions() throws DigitalOceanException, RequestUnsuccessfulException {
+
+    return (K8Options) perform(new ApiRequest(ApiAction. KUBERNETES_GET_OPTIONS)).getData();
+  }
+  
   //
   // Private methods
   //

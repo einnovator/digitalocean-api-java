@@ -20,6 +20,8 @@
  */
 package com.myjeeva.digitalocean;
 
+import java.util.List;
+
 import com.myjeeva.digitalocean.common.ActionType;
 import com.myjeeva.digitalocean.exception.DigitalOceanException;
 import com.myjeeva.digitalocean.exception.RequestUnsuccessfulException;
@@ -29,6 +31,8 @@ import com.myjeeva.digitalocean.pojo.Actions;
 import com.myjeeva.digitalocean.pojo.Backups;
 import com.myjeeva.digitalocean.pojo.Certificate;
 import com.myjeeva.digitalocean.pojo.Certificates;
+import com.myjeeva.digitalocean.pojo.Cluster;
+import com.myjeeva.digitalocean.pojo.Clusters;
 import com.myjeeva.digitalocean.pojo.Delete;
 import com.myjeeva.digitalocean.pojo.Domain;
 import com.myjeeva.digitalocean.pojo.DomainRecord;
@@ -43,12 +47,17 @@ import com.myjeeva.digitalocean.pojo.FloatingIPs;
 import com.myjeeva.digitalocean.pojo.ForwardingRules;
 import com.myjeeva.digitalocean.pojo.Image;
 import com.myjeeva.digitalocean.pojo.Images;
+import com.myjeeva.digitalocean.pojo.K8Options;
 import com.myjeeva.digitalocean.pojo.Kernels;
 import com.myjeeva.digitalocean.pojo.Key;
 import com.myjeeva.digitalocean.pojo.Keys;
+import com.myjeeva.digitalocean.pojo.LintRef;
+import com.myjeeva.digitalocean.pojo.LintResult;
 import com.myjeeva.digitalocean.pojo.LoadBalancer;
 import com.myjeeva.digitalocean.pojo.LoadBalancers;
 import com.myjeeva.digitalocean.pojo.Neighbors;
+import com.myjeeva.digitalocean.pojo.NodePool;
+import com.myjeeva.digitalocean.pojo.NodePools;
 import com.myjeeva.digitalocean.pojo.Project;
 import com.myjeeva.digitalocean.pojo.Projects;
 import com.myjeeva.digitalocean.pojo.Regions;
@@ -61,7 +70,6 @@ import com.myjeeva.digitalocean.pojo.Tag;
 import com.myjeeva.digitalocean.pojo.Tags;
 import com.myjeeva.digitalocean.pojo.Volume;
 import com.myjeeva.digitalocean.pojo.Volumes;
-import java.util.List;
 
 /**
  * <strong>DigitalOcean API client in Java</strong>
@@ -110,6 +118,7 @@ import java.util.List;
  * </pre>
  *
  * @author Jeevanandam M. (jeeva@myjeeva.com)
+ * @author EInnovator (support@einnovator.org)
  * @since v1.0
  */
 public interface DigitalOcean {
@@ -1948,11 +1957,28 @@ public interface DigitalOcean {
 
   Project getDefaultProject() throws DigitalOceanException, RequestUnsuccessfulException;
 
-  Project updateDefaultProject(Project project)
-      throws DigitalOceanException, RequestUnsuccessfulException;
+  Project updateDefaultProject(Project project) throws DigitalOceanException, RequestUnsuccessfulException;
 
-  Project patchDefaultProject(Project project)
-      throws DigitalOceanException, RequestUnsuccessfulException;
+  Project patchDefaultProject(Project project) throws DigitalOceanException, RequestUnsuccessfulException;
 
   Delete deleteProject(String projectId) throws DigitalOceanException, RequestUnsuccessfulException;
+  
+  Cluster createCluster(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException;
+  Clusters getAvailableClusters() throws DigitalOceanException, RequestUnsuccessfulException;
+  Cluster updateCluster(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException;
+  Cluster getCluster(String clusterId) throws DigitalOceanException, RequestUnsuccessfulException;
+  Delete deleteCluster(String clusterId) throws DigitalOceanException, RequestUnsuccessfulException;
+
+  NodePool createNodePool(Cluster cluster, NodePool nodePool) throws DigitalOceanException, RequestUnsuccessfulException;
+  NodePools getAllNodePools(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException;
+  NodePool updateNodePool(Cluster cluster, NodePool nodePool) throws DigitalOceanException, RequestUnsuccessfulException;
+  NodePool getNodePool(Cluster cluster, String nodePoolId) throws DigitalOceanException, RequestUnsuccessfulException;
+  Delete deleteNodePool(Cluster cluster, String nodePoolId) throws DigitalOceanException, RequestUnsuccessfulException;
+  Delete deleteNode(Cluster cluster, String nodePoolId, String nodeId) throws DigitalOceanException, RequestUnsuccessfulException;
+
+  LintRef lintCluster(Cluster cluster) throws DigitalOceanException, RequestUnsuccessfulException;
+  LintResult getLintDiagnostics(Cluster cluster, LintRef ref) throws DigitalOceanException, RequestUnsuccessfulException;
+
+  K8Options getKubernetesOptions() throws DigitalOceanException, RequestUnsuccessfulException;
+
 }

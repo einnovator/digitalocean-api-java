@@ -26,6 +26,10 @@ import com.myjeeva.digitalocean.pojo.Actions;
 import com.myjeeva.digitalocean.pojo.Backups;
 import com.myjeeva.digitalocean.pojo.Certificate;
 import com.myjeeva.digitalocean.pojo.Certificates;
+import com.myjeeva.digitalocean.pojo.Cluster;
+import com.myjeeva.digitalocean.pojo.Clusters;
+import com.myjeeva.digitalocean.pojo.NodePool;
+import com.myjeeva.digitalocean.pojo.NodePools;
 import com.myjeeva.digitalocean.pojo.Delete;
 import com.myjeeva.digitalocean.pojo.Domain;
 import com.myjeeva.digitalocean.pojo.DomainRecord;
@@ -228,9 +232,28 @@ public enum ApiAction {
   DELETE_FIREWALL("/firewalls/%s", "response", RequestMethod.DELETE, Delete.class),
   AVAILABLE_FIREWALLS("/firewalls", "firewalls", RequestMethod.GET, Firewalls.class),
   ADD_DROPLET_TO_FIREWALL("/firewalls/%s/droplets", "response", RequestMethod.POST, Response.class),
-  REMOVE_DROPLET_FROM_FIREWALL(
-      "/firewalls/%s/droplets", "response", RequestMethod.DELETE, Delete.class);
+  REMOVE_DROPLET_FROM_FIREWALL("/firewalls/%s/droplets", "response", RequestMethod.DELETE, Delete.class),
 
+  // Kubernetes Clusters
+  KUBERNETES_CREATE_CLUSTER("/kubernetes/clusters", "cluster", RequestMethod.POST, Cluster.class),
+  KUBERNETES_GET_ALL_CLUSTERS("/kubernetes/clusters", "clusters", RequestMethod.GET, Clusters.class),
+  KUBERNETES_UPDATE_CLUSTER("/kubernetes/clusters/%s", "cluster", RequestMethod.PUT, Cluster.class),
+  KUBERNETES_GET_CLUSTER("/kubernetes/clusters/%s", "cluster", RequestMethod.GET, Cluster.class),
+  KUBERNETES_DELETE_CLUSTER("/kubernetes/clusters/%s", "response", RequestMethod.DELETE, Delete.class),
+  KUBERNETES_GET_ALL_CLUSTER_UPGRADES("/kubernetes/clusters/%s/upgrades", "cluster", RequestMethod.GET, Cluster.class),
+  KUBERNETES_UPGRADE_CLUSTER("/kubernetes/clusters/%s/upgrade", "cluster", RequestMethod.POST, Cluster.class),
+  KUBERNETES_LINT_CLUSTER("/kubernetes/clusters/%s/clusterlint", "cluster", RequestMethod.POST, Cluster.class),
+  KUBERNETES_GET_LINT_DIAGNOSTICS("/kubernetes/clusters/%s/clusterlint", "cluster", RequestMethod.GET, Cluster.class),
+  KUBERNETES_GET_KUBECONFIG("/kubernetes/clusters/%s/kubeconfig", "cluster", RequestMethod.GET, Cluster.class),
+  KUBERNETES_GET_ALL_CLUSTER_NODEPOOLS("/kubernetes/clusters/%s/node_pools", "cluster", RequestMethod.GET, NodePools.class),
+  KUBERNETES_GET_CLUSTER_NODEPOOL("/kubernetes/clusters/%s/node_pools/%s", "cluster", RequestMethod.GET, NodePool.class),
+  KUBERNETES_ADD_CLUSTER_NODEPOOL("/kubernetes/clusters/%s/node_pools", "cluster", RequestMethod.POST, NodePool.class),
+  KUBERNETES_UPDATE_CLUSTER_NODEPOOL("/kubernetes/clusters/%s/node_pools/%s", "cluster", RequestMethod.PUT, NodePool.class),
+  KUBERNETES_DELETE_CLUSTER_NODEPOOL("/kubernetes/clusters/%s/node_pools/%s", "cluster", RequestMethod.DELETE, Delete.class),
+  KUBERNETES_DELETE_CLUSTER_NODE("/kubernetes/clusters/%s/node_pools/%s/nodes/%s", "cluster", RequestMethod.DELETE, Delete.class),
+  KUBERNETES_GET_OPTIONS("/kubernetes/options", "clusters", RequestMethod.GET, Clusters.class),
+  ;
+	
   private String path;
 
   private String elementName;

@@ -39,6 +39,8 @@ import com.myjeeva.digitalocean.pojo.Actions;
 import com.myjeeva.digitalocean.pojo.Backup;
 import com.myjeeva.digitalocean.pojo.Backups;
 import com.myjeeva.digitalocean.pojo.Certificate;
+import com.myjeeva.digitalocean.pojo.Cluster;
+import com.myjeeva.digitalocean.pojo.Clusters;
 import com.myjeeva.digitalocean.pojo.Delete;
 import com.myjeeva.digitalocean.pojo.Destinations;
 import com.myjeeva.digitalocean.pojo.Domain;
@@ -113,6 +115,8 @@ public class DigitalOceanIntegrationTest {
   private final String domainName = "";
 
   private String projectId;
+
+  private String clusterId;
 
   private final DigitalOcean apiClient = new DigitalOceanClient(authTokenRW);
 
@@ -1351,6 +1355,56 @@ public class DigitalOceanIntegrationTest {
   @Test
   public void testDeleteProject() throws DigitalOceanException, RequestUnsuccessfulException {
     Delete result = apiClient.deleteProject(projectId);
+    assertNotNull(result);
+  }
+  
+  //
+  //
+  //
+  
+  @Test
+  public void createCluster() throws DigitalOceanException, RequestUnsuccessfulException {
+    Cluster cluster = new Cluster();
+    cluster.setName("test cluster");
+
+    Cluster p = apiClient.createCluster(cluster);
+    clusterId = p.getId();
+
+    assertNotNull(p);
+    assertNotNull(p.getId());
+
+    log.info(p.toString());
+  }
+
+  @Test
+  public void testGetAvailableClusters()
+      throws DigitalOceanException, RequestUnsuccessfulException {
+    Clusters clusters = apiClient.getAvailableClusters();
+
+    assertNotNull(clusters);
+    assertFalse(clusters.getClusters().isEmpty());
+
+    for (Cluster cluster : clusters.getClusters()) {
+      log.info(cluster.toString());
+    }
+  }
+
+  @Test
+  public void testUpdateCluster() throws DigitalOceanException, RequestUnsuccessfulException {
+    Cluster cluster = apiClient.getCluster(clusterId);
+    cluster.setName("updated cluster name");
+
+    Cluster p = apiClient.updateCluster(cluster);
+
+    assertNotNull(p);
+    assertNotNull(p.getId());
+
+    log.info(p.toString());
+  }
+
+  @Test
+  public void testDeleteCluster() throws DigitalOceanException, RequestUnsuccessfulException {
+    Delete result = apiClient.deleteCluster(clusterId);
     assertNotNull(result);
   }
 }
