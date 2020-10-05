@@ -59,8 +59,7 @@ public class DigitalOceanKubernetesIntegrationTests {
    * This is testing values of my own respective to DigitalOcean account, to real-time integration
    * with API. So place your's for integration test case before use
    */
-  private final String authTokenRW =
-      "32ef5b210bcb856d892483048db0fb87165d9a28affa2e980c273af2b31777c1";
+  private final String authTokenRW = "";
 
   private final Integer dropletIdForInfo = 10001; // to be placed before use
   private final String volumeIdForInfo = "10001"; // to be placed before use
