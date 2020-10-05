@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Represents Domain (TLD) attributes of DigitalOcean DNS. Revised as per v2 API data structure.
@@ -34,65 +33,59 @@ public class MaintenancePolicy extends Base {
   private static final long serialVersionUID = 5958407274594550472L;
 
   /**
-   * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+   * The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation
+   * (e.g., 15:00).
    */
   @SerializedName("start_time")
   private String startTime;
 
   /**
-   * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+   * The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to
+   * indicate an arbitrary week day.
    */
   @SerializedName("day")
   private String day;
-  
-  public MaintenancePolicy() {
-  }
 
+  public MaintenancePolicy() {}
 
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
+  /**
+   * Get the value of property {@code startTime}.
+   *
+   * @return the value of {@code startTime}
+   */
+  public String getStartTime() {
+    return startTime;
+  }
 
-	/**
-	 * Get the value of property {@code startTime}.
-	 *
-	 * @return the value of {@code startTime}
-	 */
-	public String getStartTime() {
-		return startTime;
-	}
+  /**
+   * Set the value of property {@code startTime}.
+   *
+   * @param startTime the value of {@code startTime}
+   */
+  public void setStartTime(String startTime) {
+    this.startTime = startTime;
+  }
 
+  /**
+   * Get the value of property {@code day}.
+   *
+   * @return the value of {@code day}
+   */
+  public String getDay() {
+    return day;
+  }
 
-	/**
-	 * Set the value of property {@code startTime}.
-	 *
-	 * @param startTime the value of {@code startTime}
-	 */
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-
-
-	/**
-	 * Get the value of property {@code day}.
-	 *
-	 * @return the value of {@code day}
-	 */
-	public String getDay() {
-		return day;
-	}
-
-
-	/**
-	 * Set the value of property {@code day}.
-	 *
-	 * @param day the value of {@code day}
-	 */
-	public void setDay(String day) {
-		this.day = day;
-	}
-
-  
+  /**
+   * Set the value of property {@code day}.
+   *
+   * @param day the value of {@code day}
+   */
+  public void setDay(String day) {
+    this.day = day;
+  }
 }

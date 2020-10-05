@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Lint diagnostics result entry.
@@ -33,111 +32,98 @@ public class LintEntry extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * The clusterlint check that resulted in the diagnostic.
-   */
+  /** The clusterlint check that resulted in the diagnostic. */
   @SerializedName("check_name")
   private String checkName;
 
-  /**
-   * Can be one of error, warning or suggestion.
-   */
+  /** Can be one of error, warning or suggestion. */
   @SerializedName("severity")
   private String severity;
 
-  /**
-   * Feedback about the object for users to fix.
-   */
+  /** Feedback about the object for users to fix. */
   @SerializedName("message")
   private String message;
 
-  /**
-   * Metadata about the Kubernetes API object the diagnostic is reported on.
-   */
+  /** Metadata about the Kubernetes API object the diagnostic is reported on. */
   private LintMeta object;
 
-  /**
-   * Create instance of {@code LintEntry}.
-   *
-   */
-  public LintEntry() {
-	}
-  
+  /** Create instance of {@code LintEntry}. */
+  public LintEntry() {}
+
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code checkName}.
-	 *
-	 * @return the value of {@code checkName}
-	 */
-	public String getCheckName() {
-		return checkName;
-	}
+  /**
+   * Get the value of property {@code checkName}.
+   *
+   * @return the value of {@code checkName}
+   */
+  public String getCheckName() {
+    return checkName;
+  }
 
-	/**
-	 * Set the value of property {@code checkName}.
-	 *
-	 * @param checkName the value of {@code checkName}
-	 */
-	public void setCheckName(String checkName) {
-		this.checkName = checkName;
-	}
+  /**
+   * Set the value of property {@code checkName}.
+   *
+   * @param checkName the value of {@code checkName}
+   */
+  public void setCheckName(String checkName) {
+    this.checkName = checkName;
+  }
 
-	/**
-	 * Get the value of property {@code severity}.
-	 *
-	 * @return the value of {@code severity}
-	 */
-	public String getSeverity() {
-		return severity;
-	}
+  /**
+   * Get the value of property {@code severity}.
+   *
+   * @return the value of {@code severity}
+   */
+  public String getSeverity() {
+    return severity;
+  }
 
-	/**
-	 * Set the value of property {@code severity}.
-	 *
-	 * @param severity the value of {@code severity}
-	 */
-	public void setSeverity(String severity) {
-		this.severity = severity;
-	}
+  /**
+   * Set the value of property {@code severity}.
+   *
+   * @param severity the value of {@code severity}
+   */
+  public void setSeverity(String severity) {
+    this.severity = severity;
+  }
 
-	/**
-	 * Get the value of property {@code message}.
-	 *
-	 * @return the value of {@code message}
-	 */
-	public String getMessage() {
-		return message;
-	}
+  /**
+   * Get the value of property {@code message}.
+   *
+   * @return the value of {@code message}
+   */
+  public String getMessage() {
+    return message;
+  }
 
-	/**
-	 * Set the value of property {@code message}.
-	 *
-	 * @param message the value of {@code message}
-	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
+  /**
+   * Set the value of property {@code message}.
+   *
+   * @param message the value of {@code message}
+   */
+  public void setMessage(String message) {
+    this.message = message;
+  }
 
-	/**
-	 * Get the value of property {@code object}.
-	 *
-	 * @return the value of {@code object}
-	 */
-	public LintMeta getObject() {
-		return object;
-	}
+  /**
+   * Get the value of property {@code object}.
+   *
+   * @return the value of {@code object}
+   */
+  public LintMeta getObject() {
+    return object;
+  }
 
-	/**
-	 * Set the value of property {@code object}.
-	 *
-	 * @param object the value of {@code object}
-	 */
-	public void setObject(LintMeta object) {
-		this.object = object;
-	}
-	
+  /**
+   * Set the value of property {@code object}.
+   *
+   * @param object the value of {@code object}
+   */
+  public void setObject(LintMeta object) {
+    this.object = object;
+  }
 }

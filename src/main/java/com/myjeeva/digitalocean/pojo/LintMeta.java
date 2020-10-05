@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Lint Metada about the Kubernetes API object the diagnostic is reported on.
@@ -33,91 +32,77 @@ public class LintMeta extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * Name of the object
-   */
+  /** Name of the object */
   @SerializedName("name")
   private String name;
 
-  /**
-   * The kind of Kubernetes API object
-   */
+  /** The kind of Kubernetes API object */
   @SerializedName("kind")
   private String kind;
 
-  /**
-   * The namespace the object resides in the cluster..
-   */
+  /** The namespace the object resides in the cluster.. */
   @SerializedName("namespace")
   private String namespace;
 
-  /**
-   * Create instance of {@code LintMeta}.
-   *
-   */
-  public LintMeta() {
-	}
+  /** Create instance of {@code LintMeta}. */
+  public LintMeta() {}
 
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code name}.
-	 *
-	 * @return the value of {@code name}
-	 */
-	public String getName() {
-		return name;
-	}
+  /**
+   * Get the value of property {@code name}.
+   *
+   * @return the value of {@code name}
+   */
+  public String getName() {
+    return name;
+  }
 
-	/**
-	 * Set the value of property {@code name}.
-	 *
-	 * @param name the value of {@code name}
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+  /**
+   * Set the value of property {@code name}.
+   *
+   * @param name the value of {@code name}
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	/**
-	 * Get the value of property {@code kind}.
-	 *
-	 * @return the value of {@code kind}
-	 */
-	public String getKind() {
-		return kind;
-	}
+  /**
+   * Get the value of property {@code kind}.
+   *
+   * @return the value of {@code kind}
+   */
+  public String getKind() {
+    return kind;
+  }
 
-	/**
-	 * Set the value of property {@code kind}.
-	 *
-	 * @param kind the value of {@code kind}
-	 */
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
+  /**
+   * Set the value of property {@code kind}.
+   *
+   * @param kind the value of {@code kind}
+   */
+  public void setKind(String kind) {
+    this.kind = kind;
+  }
 
-	/**
-	 * Get the value of property {@code namespace}.
-	 *
-	 * @return the value of {@code namespace}
-	 */
-	public String getNamespace() {
-		return namespace;
-	}
+  /**
+   * Get the value of property {@code namespace}.
+   *
+   * @return the value of {@code namespace}
+   */
+  public String getNamespace() {
+    return namespace;
+  }
 
-	/**
-	 * Set the value of property {@code namespace}.
-	 *
-	 * @param namespace the value of {@code namespace}
-	 */
-	public void setNamespace(String namespace) {
-		this.namespace = namespace;
-	}
-
-	
-  
-	
+  /**
+   * Set the value of property {@code namespace}.
+   *
+   * @param namespace the value of {@code namespace}
+   */
+  public void setNamespace(String namespace) {
+    this.namespace = namespace;
+  }
 }

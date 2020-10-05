@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * A Node part of a NodePool in a Kubernetes Cluster.
@@ -33,35 +32,32 @@ public class Node extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * A unique ID that can be used to identify and reference the node.
-   */
+  /** A unique ID that can be used to identify and reference the node. */
   private String id;
 
-  /**
-  * An automatically generated, human-readable name for the node.
-  */
+  /** An automatically generated, human-readable name for the node. */
   private String name;
 
- 
   /**
-  * An object containing a "state" attribute whose value is set to a string indicating the current status of the node. Potential values include running, provisioning, and errored.
-  */
+   * An object containing a "state" attribute whose value is set to a string indicating the current
+   * status of the node. Potential values include running, provisioning, and errored.
+   */
   @SerializedName("status")
   private Object status;
-  
+
   /**
-  * A time value given in ISO8601 combined date and time format that represents when the node was created.
-  */
+   * A time value given in ISO8601 combined date and time format that represents when the node was
+   * created.
+   */
   @SerializedName("created_at")
   private String createdAt;
-  
+
   /**
-  * A time value given in ISO8601 combined date and time format that represents when the node was last updated.
-  */
+   * A time value given in ISO8601 combined date and time format that represents when the node was
+   * last updated.
+   */
   @SerializedName("updated_at")
   private String updatedAt;
-
 
   public Node() {
     // Default Constructor
@@ -76,94 +72,93 @@ public class Node extends Base {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code id}.
-	 *
-	 * @return the value of {@code id}
-	 */
-	public String getId() {
-		return id;
-	}
+  /**
+   * Get the value of property {@code id}.
+   *
+   * @return the value of {@code id}
+   */
+  public String getId() {
+    return id;
+  }
 
-	/**
-	 * Set the value of property {@code id}.
-	 *
-	 * @param id the value of {@code id}
-	 */
-	public void setId(String id) {
-		this.id = id;
-	}
+  /**
+   * Set the value of property {@code id}.
+   *
+   * @param id the value of {@code id}
+   */
+  public void setId(String id) {
+    this.id = id;
+  }
 
-	/**
-	 * Get the value of property {@code name}.
-	 *
-	 * @return the value of {@code name}
-	 */
-	public String getName() {
-		return name;
-	}
+  /**
+   * Get the value of property {@code name}.
+   *
+   * @return the value of {@code name}
+   */
+  public String getName() {
+    return name;
+  }
 
-	/**
-	 * Set the value of property {@code name}.
-	 *
-	 * @param name the value of {@code name}
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
+  /**
+   * Set the value of property {@code name}.
+   *
+   * @param name the value of {@code name}
+   */
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	/**
-	 * Get the value of property {@code status}.
-	 *
-	 * @return the value of {@code status}
-	 */
-	public Object getStatus() {
-		return status;
-	}
+  /**
+   * Get the value of property {@code status}.
+   *
+   * @return the value of {@code status}
+   */
+  public Object getStatus() {
+    return status;
+  }
 
-	/**
-	 * Set the value of property {@code status}.
-	 *
-	 * @param status the value of {@code status}
-	 */
-	public void setStatus(Object status) {
-		this.status = status;
-	}
+  /**
+   * Set the value of property {@code status}.
+   *
+   * @param status the value of {@code status}
+   */
+  public void setStatus(Object status) {
+    this.status = status;
+  }
 
-	/**
-	 * Get the value of property {@code createdAt}.
-	 *
-	 * @return the value of {@code createdAt}
-	 */
-	public String getCreatedAt() {
-		return createdAt;
-	}
+  /**
+   * Get the value of property {@code createdAt}.
+   *
+   * @return the value of {@code createdAt}
+   */
+  public String getCreatedAt() {
+    return createdAt;
+  }
 
-	/**
-	 * Set the value of property {@code createdAt}.
-	 *
-	 * @param createdAt the value of {@code createdAt}
-	 */
-	public void setCreatedAt(String createdAt) {
-		this.createdAt = createdAt;
-	}
+  /**
+   * Set the value of property {@code createdAt}.
+   *
+   * @param createdAt the value of {@code createdAt}
+   */
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
 
-	/**
-	 * Get the value of property {@code updatedAt}.
-	 *
-	 * @return the value of {@code updatedAt}
-	 */
-	public String getUpdatedAt() {
-		return updatedAt;
-	}
+  /**
+   * Get the value of property {@code updatedAt}.
+   *
+   * @return the value of {@code updatedAt}
+   */
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
 
-	/**
-	 * Set the value of property {@code updatedAt}.
-	 *
-	 * @param updatedAt the value of {@code updatedAt}
-	 */
-	public void setUpdatedAt(String updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
+  /**
+   * Set the value of property {@code updatedAt}.
+   *
+   * @param updatedAt the value of {@code updatedAt}
+   */
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 }

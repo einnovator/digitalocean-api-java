@@ -1357,11 +1357,11 @@ public class DigitalOceanIntegrationTest {
     Delete result = apiClient.deleteProject(projectId);
     assertNotNull(result);
   }
-  
+
   //
   //
   //
-  
+
   @Test
   public void createCluster() throws DigitalOceanException, RequestUnsuccessfulException {
     Cluster cluster = new Cluster();
@@ -1379,7 +1379,7 @@ public class DigitalOceanIntegrationTest {
   @Test
   public void testGetAvailableClusters()
       throws DigitalOceanException, RequestUnsuccessfulException {
-    Clusters clusters = apiClient.getAvailableClusters();
+    Clusters clusters = apiClient.getAvailableClusters(0, 100);
 
     assertNotNull(clusters);
     assertFalse(clusters.getClusters().isEmpty());

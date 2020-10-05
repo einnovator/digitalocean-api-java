@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Options to Kubernetes cluster lint operation.
@@ -33,111 +32,98 @@ public class LintOptions extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * An array of check groups that will be run when clusterlint executes checks.
-   */
+  /** An array of check groups that will be run when clusterlint executes checks. */
   @SerializedName("include_groups")
   private String[] includeGroups;
 
-  /**
-  * An array of checks that will be run when clusterlint executes checks.
-  */
+  /** An array of checks that will be run when clusterlint executes checks. */
   @SerializedName("include_groups")
   private String[] includeChecks;
 
- 
-  /**
-  * An array of check groups that will be omitted when clusterlint executes checks.
-  */
+  /** An array of check groups that will be omitted when clusterlint executes checks. */
   @SerializedName("exclude_groups")
   private String[] excludeGroups;
-  
 
-  /**
-  * An array of checks that will be run when clusterlint executes checks.
-  */
+  /** An array of checks that will be run when clusterlint executes checks. */
   @SerializedName("exclude_checks")
   private String[] excludeChecks;
 
-  public LintOptions() {
-  }
+  public LintOptions() {}
 
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code includeGroups}.
-	 *
-	 * @return the value of {@code includeGroups}
-	 */
-	public String[] getIncludeGroups() {
-		return includeGroups;
-	}
+  /**
+   * Get the value of property {@code includeGroups}.
+   *
+   * @return the value of {@code includeGroups}
+   */
+  public String[] getIncludeGroups() {
+    return includeGroups;
+  }
 
-	/**
-	 * Set the value of property {@code includeGroups}.
-	 *
-	 * @param includeGroups the value of {@code includeGroups}
-	 */
-	public void setIncludeGroups(String[] includeGroups) {
-		this.includeGroups = includeGroups;
-	}
+  /**
+   * Set the value of property {@code includeGroups}.
+   *
+   * @param includeGroups the value of {@code includeGroups}
+   */
+  public void setIncludeGroups(String[] includeGroups) {
+    this.includeGroups = includeGroups;
+  }
 
-	/**
-	 * Get the value of property {@code includeChecks}.
-	 *
-	 * @return the value of {@code includeChecks}
-	 */
-	public String[] getIncludeChecks() {
-		return includeChecks;
-	}
+  /**
+   * Get the value of property {@code includeChecks}.
+   *
+   * @return the value of {@code includeChecks}
+   */
+  public String[] getIncludeChecks() {
+    return includeChecks;
+  }
 
-	/**
-	 * Set the value of property {@code includeChecks}.
-	 *
-	 * @param includeChecks the value of {@code includeChecks}
-	 */
-	public void setIncludeChecks(String[] includeChecks) {
-		this.includeChecks = includeChecks;
-	}
+  /**
+   * Set the value of property {@code includeChecks}.
+   *
+   * @param includeChecks the value of {@code includeChecks}
+   */
+  public void setIncludeChecks(String[] includeChecks) {
+    this.includeChecks = includeChecks;
+  }
 
-	/**
-	 * Get the value of property {@code excludeGroups}.
-	 *
-	 * @return the value of {@code excludeGroups}
-	 */
-	public String[] getExcludeGroups() {
-		return excludeGroups;
-	}
+  /**
+   * Get the value of property {@code excludeGroups}.
+   *
+   * @return the value of {@code excludeGroups}
+   */
+  public String[] getExcludeGroups() {
+    return excludeGroups;
+  }
 
-	/**
-	 * Set the value of property {@code excludeGroups}.
-	 *
-	 * @param excludeGroups the value of {@code excludeGroups}
-	 */
-	public void setExcludeGroups(String[] excludeGroups) {
-		this.excludeGroups = excludeGroups;
-	}
+  /**
+   * Set the value of property {@code excludeGroups}.
+   *
+   * @param excludeGroups the value of {@code excludeGroups}
+   */
+  public void setExcludeGroups(String[] excludeGroups) {
+    this.excludeGroups = excludeGroups;
+  }
 
-	/**
-	 * Get the value of property {@code excludeChecks}.
-	 *
-	 * @return the value of {@code excludeChecks}
-	 */
-	public String[] getExcludeChecks() {
-		return excludeChecks;
-	}
+  /**
+   * Get the value of property {@code excludeChecks}.
+   *
+   * @return the value of {@code excludeChecks}
+   */
+  public String[] getExcludeChecks() {
+    return excludeChecks;
+  }
 
-	/**
-	 * Set the value of property {@code excludeChecks}.
-	 *
-	 * @param excludeChecks the value of {@code excludeChecks}
-	 */
-	public void setExcludeChecks(String[] excludeChecks) {
-		this.excludeChecks = excludeChecks;
-	}
-	
-	
+  /**
+   * Set the value of property {@code excludeChecks}.
+   *
+   * @param excludeChecks the value of {@code excludeChecks}
+   */
+  public void setExcludeChecks(String[] excludeChecks) {
+    this.excludeChecks = excludeChecks;
+  }
 }

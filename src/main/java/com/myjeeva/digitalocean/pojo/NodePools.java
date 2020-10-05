@@ -1,5 +1,6 @@
 package com.myjeeva.digitalocean.pojo;
 
+import com.google.gson.annotations.SerializedName;
 import java.util.List;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -10,15 +11,13 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
  */
 public class NodePools extends Base {
 
- /**
-  *
-  */
+  /** */
   private static final long serialVersionUID = 8318617726271096639L;
 
+  @SerializedName("node_pools")
   private List<NodePool> nodePools;
 
-  public NodePools() {
-  }
+  public NodePools() {}
 
   @Override
   public String toString() {

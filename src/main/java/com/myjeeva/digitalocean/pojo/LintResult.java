@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Lint diagnostics result.
@@ -33,112 +32,105 @@ public class LintResult extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * Id of the clusterlint run that can be used later to fetch the diagnostics.
-   */
+  /** Id of the clusterlint run that can be used later to fetch the diagnostics. */
   @SerializedName("run_id")
   private String runId;
 
   /**
-   * A time value given in ISO8601 combined date and time format that represents when the schedule clusterlint run request was made.
+   * A time value given in ISO8601 combined date and time format that represents when the schedule
+   * clusterlint run request was made.
    */
   @SerializedName("requested_at")
   private String requestedAt;
 
   /**
-   * A time value given in ISO8601 combined date and time format that represents when the schedule clusterlint run request was completed.
+   * A time value given in ISO8601 combined date and time format that represents when the schedule
+   * clusterlint run request was completed.
    */
   @SerializedName("completed_at")
   private String completedAt;
 
-  /**
-   * An array of diagnostics reporting potential problems for the given cluster.
-   */
+  /** An array of diagnostics reporting potential problems for the given cluster. */
   @SerializedName("diagnostics")
   private LintEntry diagnostics;
 
-  /**
-   * Create instance of {@code LintResult}.
-   *
-   */
-  public LintResult() {
-	}
-  
+  /** Create instance of {@code LintResult}. */
+  public LintResult() {}
+
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code runId}.
-	 *
-	 * @return the value of {@code runId}
-	 */
-	public String getRunId() {
-		return runId;
-	}
+  /**
+   * Get the value of property {@code runId}.
+   *
+   * @return the value of {@code runId}
+   */
+  public String getRunId() {
+    return runId;
+  }
 
-	/**
-	 * Set the value of property {@code runId}.
-	 *
-	 * @param runId the value of {@code runId}
-	 */
-	public void setRunId(String runId) {
-		this.runId = runId;
-	}
+  /**
+   * Set the value of property {@code runId}.
+   *
+   * @param runId the value of {@code runId}
+   */
+  public void setRunId(String runId) {
+    this.runId = runId;
+  }
 
-	/**
-	 * Get the value of property {@code requestedAt}.
-	 *
-	 * @return the value of {@code requestedAt}
-	 */
-	public String getRequestedAt() {
-		return requestedAt;
-	}
+  /**
+   * Get the value of property {@code requestedAt}.
+   *
+   * @return the value of {@code requestedAt}
+   */
+  public String getRequestedAt() {
+    return requestedAt;
+  }
 
-	/**
-	 * Set the value of property {@code requestedAt}.
-	 *
-	 * @param requestedAt the value of {@code requestedAt}
-	 */
-	public void setRequestedAt(String requestedAt) {
-		this.requestedAt = requestedAt;
-	}
+  /**
+   * Set the value of property {@code requestedAt}.
+   *
+   * @param requestedAt the value of {@code requestedAt}
+   */
+  public void setRequestedAt(String requestedAt) {
+    this.requestedAt = requestedAt;
+  }
 
-	/**
-	 * Get the value of property {@code completedAt}.
-	 *
-	 * @return the value of {@code completedAt}
-	 */
-	public String getCompletedAt() {
-		return completedAt;
-	}
+  /**
+   * Get the value of property {@code completedAt}.
+   *
+   * @return the value of {@code completedAt}
+   */
+  public String getCompletedAt() {
+    return completedAt;
+  }
 
-	/**
-	 * Set the value of property {@code completedAt}.
-	 *
-	 * @param completedAt the value of {@code completedAt}
-	 */
-	public void setCompletedAt(String completedAt) {
-		this.completedAt = completedAt;
-	}
+  /**
+   * Set the value of property {@code completedAt}.
+   *
+   * @param completedAt the value of {@code completedAt}
+   */
+  public void setCompletedAt(String completedAt) {
+    this.completedAt = completedAt;
+  }
 
-	/**
-	 * Get the value of property {@code diagnostics}.
-	 *
-	 * @return the value of {@code diagnostics}
-	 */
-	public LintEntry getDiagnostics() {
-		return diagnostics;
-	}
+  /**
+   * Get the value of property {@code diagnostics}.
+   *
+   * @return the value of {@code diagnostics}
+   */
+  public LintEntry getDiagnostics() {
+    return diagnostics;
+  }
 
-	/**
-	 * Set the value of property {@code diagnostics}.
-	 *
-	 * @param diagnostics the value of {@code diagnostics}
-	 */
-	public void setDiagnostics(LintEntry diagnostics) {
-		this.diagnostics = diagnostics;
-	}  
-	
+  /**
+   * Set the value of property {@code diagnostics}.
+   *
+   * @param diagnostics the value of {@code diagnostics}
+   */
+  public void setDiagnostics(LintEntry diagnostics) {
+    this.diagnostics = diagnostics;
+  }
 }

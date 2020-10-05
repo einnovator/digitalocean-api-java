@@ -20,9 +20,8 @@
  */
 package com.myjeeva.digitalocean.pojo;
 
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-
 import com.google.gson.annotations.SerializedName;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 /**
  * Result with lint result id.
@@ -33,38 +32,32 @@ public class LintRef extends Base {
 
   private static final long serialVersionUID = 5958407274594550472L;
 
-  /**
-   * Id of the clusterlint run that can be used later to fetch the diagnostics.
-   */
+  /** Id of the clusterlint run that can be used later to fetch the diagnostics. */
   @SerializedName("run_id")
   private String runId;
 
-  public LintRef() {
-  }
+  public LintRef() {}
 
   @Override
   public String toString() {
     return ReflectionToStringBuilder.toString(this);
   }
 
-	/**
-	 * Get the value of property {@code runId}.
-	 *
-	 * @return the value of {@code runId}
-	 */
-	public String getRunId() {
-		return runId;
-	}
+  /**
+   * Get the value of property {@code runId}.
+   *
+   * @return the value of {@code runId}
+   */
+  public String getRunId() {
+    return runId;
+  }
 
-	/**
-	 * Set the value of property {@code runId}.
-	 *
-	 * @param runId the value of {@code runId}
-	 */
-	public void setRunId(String runId) {
-		this.runId = runId;
-	}
-
-  
-	
+  /**
+   * Set the value of property {@code runId}.
+   *
+   * @param runId the value of {@code runId}
+   */
+  public void setRunId(String runId) {
+    this.runId = runId;
+  }
 }

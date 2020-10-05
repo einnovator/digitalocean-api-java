@@ -16,3 +16,5 @@ bin/
 /2.*/**
 .idea/
 *.iml
+
+settings.xml
